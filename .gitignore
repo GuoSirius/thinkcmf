@@ -9,3 +9,9 @@
 /node_modules
 Vagrantfile
 .vagrant
+
+# 自定义 忽略文件
+composer.lock
+vendor
+/data/install.lock
+/data/config/.database.php
