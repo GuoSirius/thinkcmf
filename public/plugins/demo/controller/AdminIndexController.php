@@ -6,17 +6,14 @@
 // +----------------------------------------------------------------------
 // | Author: Dean <zxxjjforever@163.com>
 // +----------------------------------------------------------------------
-
-namespace plugins\demo\controller;
-
-//Demo插件英文名，改成你的插件英文就行了
+namespace plugins\demo\controller; //Demo插件英文名，改成你的插件英文就行了
 
 use cmf\controller\PluginAdminBaseController;
 use think\Db;
 
 /**
- * Class AdminIndexController.
- *
+ * Class AdminIndexController
+ * @package plugins\demo\controller
  * @adminMenuRoot(
  *     'name'   =>'演示插件',
  *     'action' =>'default',
@@ -29,12 +26,13 @@ use think\Db;
  */
 class AdminIndexController extends PluginAdminBaseController
 {
+
     protected function initialize()
     {
         parent::initialize();
-        $adminId = cmf_get_current_admin_id(); //获取后台管理员id，可判断是否登录
+        $adminId = cmf_get_current_admin_id();//获取后台管理员id，可判断是否登录
         if (!empty($adminId)) {
-            $this->assign('admin_id', $adminId);
+            $this->assign("admin_id", $adminId);
         }
     }
 
@@ -57,12 +55,15 @@ class AdminIndexController extends PluginAdminBaseController
 //        if ($result !== true) {
 //            $this->error($result);
 //        }
-        $users = Db::name('user')->limit(0, 5)->select();
+        $users = Db::name("user")->limit(0, 5)->select();
         //$demos = PluginDemoModel::all();
 
         // print_r($demos);
 
-        $this->assign('users', $users);
+        $this->assign("users", $users);
+
+
+        $this->assign("users", $users);
 
         return $this->fetch('/admin_index');
     }
@@ -82,15 +83,17 @@ class AdminIndexController extends PluginAdminBaseController
      */
     public function setting()
     {
-        $users = Db::name('user')->limit(0, 5)->select();
+        $users = Db::name("user")->limit(0, 5)->select();
         //$demos = PluginDemoModel::all();
 
         // print_r($demos);
 
-        $this->assign('users', $users);
+        $this->assign("users", $users);
 
-        $this->assign('users', $users);
+
+        $this->assign("users", $users);
 
         return $this->fetch('/admin_index');
     }
+
 }
